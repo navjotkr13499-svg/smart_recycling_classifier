@@ -205,3 +205,91 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Data files (LARGE FILES - DO NOT UPLOAD)
+data/raw/*
+data/processed/*
+data/**/*.jpg
+data/**/*.png
+data/**/*.jpeg
+data/**/*.gif
+data/**/*.zip
+data/**/*.tar
+data/**/*.gz
+
+# Keep folder structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/sample_images/
+!data/README.md
+
+# Model files (large binary files)
+models/*.h5
+models/*.keras
+models/*.pb
+models/*.hdf5
+!models/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.spyderproject
+.spyproject
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Results (large output files)
+results/**/*.h5
+results/**/*.pkl
+*.pkl
+
+# Temporary files
+*.tmp
+*.bak
+*~
