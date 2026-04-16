@@ -4,7 +4,7 @@ Data augmentation utilities
 import os
 import sys
 import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from keras.src.legacy.preprocessing.image import ImageDataGenerator
 from pathlib import Path
 
 # ✅ Fix: explicitly point to project root BEFORE any imports
