@@ -1,12 +1,19 @@
 """
 Data augmentation utilities
 """
+import os
+import sys
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-import sys
 from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent))
+
+# ✅ Fix: explicitly point to project root BEFORE any imports
+PROJECT_ROOT = Path(__file__).parent.parent.parent  # goes up: data → src → project root
+sys.path.insert(0, str(PROJECT_ROOT))               # insert at position 0 (highest priority)
+
+# ✅ Now safely import your config
 from config import *
+
 
 def create_data_generators():
     """
