@@ -15,7 +15,7 @@ sys.path.insert(0, str(PROJECT_ROOT))               # insert at position 0 (high
 from config import *
 
 
-def create_data_generators():
+def create_data_generators(batch_size=BATCH_SIZE):
     """
     Create data generators for train, validation, and test sets
     
@@ -42,7 +42,7 @@ def create_data_generators():
     train_generator = train_datagen.flow_from_directory(
         PROCESSED_DATA_DIR / 'train',
         target_size=IMG_SIZE,
-        batch_size=BATCH_SIZE,
+        batch_size=batch_size,
         class_mode='categorical',
         shuffle=True,
         seed=RANDOM_SEED
@@ -51,7 +51,7 @@ def create_data_generators():
     val_generator = val_test_datagen.flow_from_directory(
         PROCESSED_DATA_DIR / 'val',
         target_size=IMG_SIZE,
-        batch_size=BATCH_SIZE,
+        batch_size=batch_size,
         class_mode='categorical',
         shuffle=False
     )
@@ -59,7 +59,7 @@ def create_data_generators():
     test_generator = val_test_datagen.flow_from_directory(
         PROCESSED_DATA_DIR / 'test',
         target_size=IMG_SIZE,
-        batch_size=BATCH_SIZE,
+        batch_size=batch_size,
         class_mode='categorical',
         shuffle=False
     )

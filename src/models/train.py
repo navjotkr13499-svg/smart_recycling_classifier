@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow.keras.callbacks import (
     ModelCheckpoint, EarlyStopping,
-    ReduceLROnPlateau, TensorBoard, CSVLogger
+    ReduceLROnPlateau, CSVLogger
 )
 from config import *
 from src.models.model import build_model, unfreeze_model, save_model, print_model_summary
@@ -33,11 +33,9 @@ def build_callbacks(phase="phase1"):
         list of Keras callbacks
     """
     checkpoint_path = MODELS_DIR / f"best_model_{phase}.keras"
-    log_path        = RESULTS_DIR / "logs" / phase
     csv_path        = RESULTS_DIR / "metrics" / f"training_log_{phase}.csv"
 
     # Create dirs
-    log_path.mkdir(parents=True, exist_ok=True)
     csv_path.parent.mkdir(parents=True, exist_ok=True)
 
     callbacks = [
@@ -68,12 +66,6 @@ def build_callbacks(phase="phase1"):
             patience=5,
             min_lr=1e-7,
             verbose=1
-        ),
-
-        # ── TensorBoard logs ──────────────────────────────────
-        TensorBoard(
-            log_dir=str(log_path),
-            histogram_freq=1
         ),
 
         # ── CSV training log ──────────────────────────────────
@@ -231,7 +223,7 @@ def run_training():
 
     # ── Step 1: Data ──────────────────────────────────────────
     print("\n📂 Loading data generators...")
-    train_gen, val_gen, test_gen = create_data_generators()
+    train_gen, val_gen, test_gen = create_data_generators(batch_size=16)
     print(f"   Train : {train_gen.samples} images")
     print(f"   Val   : {val_gen.samples} images")
     print(f"   Test  : {test_gen.samples} images")
