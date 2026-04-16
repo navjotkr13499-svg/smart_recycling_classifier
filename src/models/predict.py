@@ -46,7 +46,7 @@ def preprocess_image(image_path, target_size=IMG_SIZE):
     # Add batch dimension → (1, 224, 224, 3)
     img_array = np.expand_dims(img_array, axis=0).astype('float32')
 
-    return img_array, img_display
+    return img_array
 
 
 # ============================================================
